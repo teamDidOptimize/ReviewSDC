@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoeyRivera01/SDC.git"
+    "url": "https://github.com/JoeyRivera01/SDC.git"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +21,9 @@
   "homepage": "https://github.com/JoeyRivera01/SDC#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.12.14"
+    "mongoose": "^5.12.14",
+    "pg": "^8.6.0",
+    "postgres": "^1.0.2"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
