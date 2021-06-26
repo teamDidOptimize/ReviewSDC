@@ -19,8 +19,9 @@ DROP TABLE IF EXISTS characteristicsreviews;
 CREATE TABLE reviewsphotos (
   id int PRIMARY KEY,
   review_id int,
-  url varchar(255)
+  url varchar(10485760)
 );
+
 
 CREATE TABLE reviews (
   id int PRIMARY KEY,
@@ -34,8 +35,10 @@ CREATE TABLE reviews (
   reviewer_name varchar(255),
   reviewer_email varchar(255),
   response varchar(255),
-  helpfulness int
+  helpfulness int,
+  photos text[][]
 );
+
 
 CREATE TABLE characteristics (
   id int PRIMARY KEY,
@@ -47,5 +50,13 @@ CREATE TABLE characteristicsreviews (
   id int,
   characteristic_id int,
   review_id int,
-  value int
+  value float
 );
+
+CREATE INDEX reviewsPhotosID on reviewsphotos(review_id);
+CREATE INDEX reviewsProductId on reviews(product_id);
+CREATE INDEX characteristicsProductId on characteristics(product_id);
+CREATE INDEX characteristicsName on characteristics(name);
+CREATE INDEX characteristicsReviewsProductId on characteristicsreviews(characteristic_id);
+CREATE INDEX characteristicsId on characteristics(id);
+CREATE INDEX characteristicsReviewsId on characteristicsreviews(id);

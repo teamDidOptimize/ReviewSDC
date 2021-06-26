@@ -41,6 +41,7 @@ pool.connect((err, res) => {
 
 //   } else {
 //     console.log('successfully added reviews');
+//     console.log('finished all data importing');
 //   }
 // });
 
