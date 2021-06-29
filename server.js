@@ -51,17 +51,15 @@ app.get('/fetchReviews', (req, res) => {
         seenBefore[copyOfResults[i].id] = 1;
       }
     }
-    res.send(temp);
+    res.send(resultObject);
   });
 });
 
 
-
-
-app.get('/meta', (req, res) => {
+app.get('/fetchMeta', async (req, res) => {
   let productId = req.query.productId;
   let rating = req.query.rating;
-  pool.query(`SELECT * FROM characteristics, characteristicsreviews
+  await pool.query(`SELECT * FROM characteristics, characteristicsreviews
              WHERE characteristics.product_id = ${productId}
              AND characteristics.id = characteristicsreviews.characteristic_id;`, (err, result) => {
     if (err) {
@@ -81,8 +79,6 @@ app.get('/meta', (req, res) => {
           if (key === 'value') {
             if (resultObject['ratings'][currentValue] === undefined) {
               resultObject['ratings'][currentValue] = 1;
-            } else {
-              resultObject['ratings'][currentValue]++;
             }
           }
 
@@ -96,8 +92,7 @@ app.get('/meta', (req, res) => {
 
         }
       }
-      console.log(resultObject);
-      res.send(result.rows);
+      res.send(resultObject);
     }
   });
 });
@@ -112,8 +107,6 @@ app.put('/report', (req, res) => {
       console.log(err);
       res.send(404);
     } else {
-      console.log(reviewId);
-      console.log(productId);
       res.send('Reported Review');
     }
   });
