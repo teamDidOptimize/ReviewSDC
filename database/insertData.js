@@ -3,7 +3,7 @@
 const { Pool, Client } = require('pg');
 const pool = new Pool({
   user: 'Simon',
-  database: 'reviewsoverview',
+  database: 'reviewsoverview'
 });
 
 //If connected, console log connected to postgres
